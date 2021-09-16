@@ -10,13 +10,13 @@ const StyledIndexImages = styled.div`
   background: ${({ theme }) => theme.rightImg.color.bgGrey};
 
   .rightImg--image {
-    width: 25rem;
-    height: 25rem;
+    width: 20rem;
+    height: 20rem;
     margin-bottom: 2.8rem;
   }
   .rightImg--title {
-    font-size: 3.2rem;
-    margin-bottom: 1.8rem;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
     color: ${({ theme }) => theme.rightImg.color.darkGrey};
     font-weight: 300;
   }

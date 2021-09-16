@@ -4,3 +4,8 @@ export interface UserCredential {
   phone_number: string;
   password: string;
 }
+
+export interface LoginCredential {
+  phone_number: string;
+  password: string;
+}
