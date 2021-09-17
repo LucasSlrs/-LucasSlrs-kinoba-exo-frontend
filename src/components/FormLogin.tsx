@@ -4,7 +4,7 @@ import IndexImages from "../components/IndexImages";
 import { LoginCredential } from "../interfaces/InterfaceLogs";
 import { Link } from "react-router-dom";
 
-const FormLogin = () => {
+const FormLogin = (props: any) => {
   const [state, setState] = useState<LoginCredential>({
     phone_number: "",
     password: "",
@@ -26,6 +26,7 @@ const FormLogin = () => {
     state: LoginCredential
   ) => {
     e.preventDefault();
+    props.history.push("/dashboard");
   };
   return (
     <IndexImages>
