@@ -1,9 +1,10 @@
-import { UserCredential } from "../interfaces/InterfaceLogs";
+import { UserCredential, LoginCredential } from "../interfaces/InterfaceLogs";
 import axios from "axios";
 
 const service = axios.create({
   baseURL: "http://localhost:5000",
   withCredentials: true,
+  headers: { token: localStorage.token },
 });
 
 const errorHandler = (err: any) => {
@@ -18,6 +19,18 @@ const APIHelper = {
   signup(newuserInfo: UserCredential) {
     return service
       .post("/user/auth/signup", newuserInfo)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+  login(loginInfo: LoginCredential) {
+    return service
+      .post("/user/auth/login", loginInfo)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+  getUser() {
+    return service
+      .get("/user/dashboard")
       .then((res) => res.data)
       .catch(errorHandler);
   },

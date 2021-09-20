@@ -4,6 +4,7 @@ import { UserCredential } from "../interfaces/InterfaceLogs";
 import IndexImages from "../components/IndexImages";
 import APIHelper from "../api/apiHelper";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const FormSignup = (props: any): JSX.Element => {
   const [state, setState] = React.useState<UserCredential>({
@@ -30,11 +31,17 @@ const FormSignup = (props: any): JSX.Element => {
     e.preventDefault();
     await APIHelper.signup(state)
       .then((data) => {
-        console.log(data);
-        props.history.push("/login");
+        const parseResponse = data;
+        localStorage.setItem("token", parseResponse.token);
+        props.setAuth(true); // user is auth so redirect to dashboard
+        toast.success("Welcome!");
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        // toast.error("Invalid credentials");
+        console.error(err);
+        if (err === "User already exist") {
+          toast.error("Phone number already used");
+        }
       });
   };
   return (

@@ -3,6 +3,8 @@ import StyledFormLogin from "../elements/StyledFormSignup";
 import IndexImages from "../components/IndexImages";
 import { LoginCredential } from "../interfaces/InterfaceLogs";
 import { Link } from "react-router-dom";
+import APIHelper from "../api/apiHelper";
+import { toast } from "react-toastify";
 
 const FormLogin = (props: any) => {
   const [state, setState] = useState<LoginCredential>({
@@ -21,12 +23,22 @@ const FormLogin = (props: any) => {
       [inputName]: inputValue,
     }));
   };
-  const handleSubmit = (
+  const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     state: LoginCredential
   ) => {
     e.preventDefault();
-    props.history.push("/dashboard");
+    await APIHelper.login(state)
+      .then((data) => {
+        const parseResponse = data;
+        localStorage.setItem("token", parseResponse.token);
+        props.setAuth(true); // user is auth so redirect to dashboard
+        toast.success("Welcome back!");
+      })
+      .catch((err) => {
+        toast.error("Invalid credentials. Email or password is incorrect");
+        console.error(err);
+      });
   };
   return (
     <IndexImages>
