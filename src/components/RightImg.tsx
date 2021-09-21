@@ -1,7 +1,11 @@
 import React from "react";
 import StyledRightImg from "../elements/StyledRightImg";
 
-const RightImg = (props: any): JSX.Element => {
+interface textRight {
+  messageText: string;
+}
+
+const RightImg = (props: textRight): JSX.Element => {
   return (
     <StyledRightImg>
       <img
@@ -14,7 +18,6 @@ const RightImg = (props: any): JSX.Element => {
         <p className="rightImg--p">{props.messageText}</p>
         <div className="rightImg--divider"></div>
       </div>
-      {props.children}
     </StyledRightImg>
   );
 };

@@ -1,7 +1,11 @@
 import React from "react";
 import StyledIndexImages from "../elements/StyledIndexImages";
 
-const IndexImages = (props: any): JSX.Element => {
+interface IProps {
+  children: {};
+}
+
+const IndexImages = (props: IProps): JSX.Element => {
   return (
     <StyledIndexImages>
       <img
@@ -11,7 +15,7 @@ const IndexImages = (props: any): JSX.Element => {
       />
       <h3 className="rightImg--title">Keep your phone connected</h3>
       <div className="rightImg--div">
-        <p className="rightImg--p">{props.messageText}</p>
+        <p className="rightImg--p"></p>
         <div className="rightImg--divider"></div>
       </div>
       {props.children}

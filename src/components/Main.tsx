@@ -56,6 +56,7 @@ const Main = (props: IProps): JSX.Element => {
         setAuth={props.setAuth}
         bChatClicked={setbChatCliked}
         setChatSelected={setChatSelected}
+        userConnected={user.user_id}
       />
       <Right
         bChatClicked={bChatClicked}

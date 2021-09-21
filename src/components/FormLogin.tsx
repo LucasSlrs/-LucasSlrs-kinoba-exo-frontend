@@ -6,7 +6,14 @@ import { Link } from "react-router-dom";
 import APIHelper from "../api/apiHelper";
 import { toast } from "react-toastify";
 
-const FormLogin = (props: any) => {
+interface IProps {
+  history: {};
+  location: {};
+  match: {};
+  setAuth: (boolean: boolean) => void;
+}
+
+const FormLogin = (props: IProps) => {
   const [state, setState] = useState<LoginCredential>({
     phone_number: "",
     password: "",

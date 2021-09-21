@@ -6,7 +6,14 @@ import APIHelper from "../api/apiHelper";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const FormSignup = (props: any): JSX.Element => {
+interface IProps {
+  history: {};
+  location: {};
+  match: {};
+  setAuth: (boolean: boolean) => void;
+}
+
+const FormSignup = (props: IProps): JSX.Element => {
   const [state, setState] = React.useState<UserCredential>({
     first_name: "",
     last_name: "",
@@ -37,7 +44,7 @@ const FormSignup = (props: any): JSX.Element => {
         toast.success("Welcome!");
       })
       .catch((err) => {
-        // toast.error("Invalid credentials");
+        toast.error("Invalid credentials or missing credentials");
         console.error(err);
         if (err === "User already exist") {
           toast.error("Phone number already used");

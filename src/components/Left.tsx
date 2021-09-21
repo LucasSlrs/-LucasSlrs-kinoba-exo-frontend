@@ -26,8 +26,10 @@ interface IProps {
   setChatSelected: (number: number) => void;
   state: {};
   setAuth: (boolean: boolean) => void;
+  userConnected: number;
 }
 const icons: string[] = ["faSignOutAlt"];
+
 const Left = (props: IProps | any) => {
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
@@ -62,7 +64,7 @@ const Left = (props: IProps | any) => {
       <StyledLeftSide>
         <ul>
           {data.items
-            ?.filter((user: ListOfUser) => user.user_id !== 28) // here it's the user id but it should be the user token
+            ?.filter((user: ListOfUser) => user.user_id !== props.userConnected)
             .map((el: ListOfUser) => {
               return (
                 <Box
