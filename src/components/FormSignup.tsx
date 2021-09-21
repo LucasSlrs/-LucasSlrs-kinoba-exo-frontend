@@ -1,6 +1,6 @@
 import React from "react";
 import StyledFormLogin from "../elements/StyledFormSignup";
-import { UserCredential } from "../interfaces/InterfaceLogs";
+import { UserCredential } from "../interfaces/Interface";
 import IndexImages from "../components/IndexImages";
 import APIHelper from "../api/apiHelper";
 import { Link } from "react-router-dom";

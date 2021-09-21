@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledRight = styled.div`
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: 75%;
   height: 100%;
 `;
 

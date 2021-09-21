@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import StyledFormLogin from "../elements/StyledFormSignup";
 import IndexImages from "../components/IndexImages";
-import { LoginCredential } from "../interfaces/InterfaceLogs";
+import { LoginCredential } from "../interfaces/Interface";
 import { Link } from "react-router-dom";
 import APIHelper from "../api/apiHelper";
 import { toast } from "react-toastify";

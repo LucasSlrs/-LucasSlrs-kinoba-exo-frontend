@@ -1,4 +1,4 @@
-import { UserCredential, LoginCredential } from "../interfaces/InterfaceLogs";
+import { UserCredential, LoginCredential } from "../interfaces/Interface";
 import axios from "axios";
 
 const service = axios.create({
@@ -31,6 +31,32 @@ const APIHelper = {
   getUser() {
     return service
       .get("/user/dashboard")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+  getListOfUSers() {
+    return service
+      .get("user/auth/listusers")
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+  getUserById(user_id: number) {
+    return service
+      .get(`/user/auth/getuser/${user_id}`)
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+  getMessagesSendedTo(message_from: number, message_to: number) {
+    return service
+      .get(
+        `http://localhost:5000/user/message/messagesTo/${message_from}/${message_to}`
+      )
+      .then((res) => res.data)
+      .catch(errorHandler);
+  },
+  isVerify() {
+    return service
+      .get("/user/auth/is-verify")
       .then((res) => res.data)
       .catch(errorHandler);
   },

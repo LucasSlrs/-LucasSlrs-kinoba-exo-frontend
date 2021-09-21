@@ -4,20 +4,36 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 import StyledHeader from "../elements/StyledHeader";
 
-const Header = (props: any) => {
-  console.log(props.props.state);
+interface IProps {
+  iconClass: string;
+  icons: string[];
+  props: {
+    state: {
+      profile_picture: string;
+    };
+  };
+  setAuth: (boolean: boolean) => void;
+}
+const Header = (props: IProps) => {
   return (
     <StyledHeader>
-      <img
-        className="avatar"
-        src={props.props.state.profile_picture}
-        alt="user pic"
-      />
-      <p>Hello {props.props.state.first_name}</p>
+      {props.props.state.profile_picture === "" ? (
+        <img
+          className="avatar"
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+          alt="no pic"
+        />
+      ) : (
+        <img
+          className="avatar"
+          src={props.props.state.profile_picture}
+          alt="user pic"
+        />
+      )}
       <FontAwesomeIcon
         className="greyIcon"
         icon={faSignOutAlt}
-        onClick={() => props.props.props.setAuth(false)}
+        onClick={() => props.setAuth(false)}
       />
     </StyledHeader>
   );

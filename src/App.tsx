@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +12,7 @@ import Main from "./components/Main";
 import theme from "./theme/index";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import APIHelper from "./api/apiHelper";
 
 function App() {
   const [isAuthentificated, setAuthentificate] = useState<Boolean>(false);
@@ -19,6 +20,21 @@ function App() {
   const setAuth = (boolean: boolean) => {
     setAuthentificate(boolean);
   };
+
+  async function isAuth() {
+    try {
+      await APIHelper.isVerify().then((response) => {
+        const parseRes = response;
+        parseRes === true ? setAuthentificate(true) : setAuthentificate(false);
+      });
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  }
+
+  useEffect(() => {
+    isAuth();
+  });
 
   return (
     <Fragment>
